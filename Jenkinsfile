@@ -1,10 +1,10 @@
 pipeline {
-	// agent {
-    //     docker {
-    //         image 'node:18.18.2'
-    //         // args '-d -p 8443:3000 -u root -v /home/psp_jwoyoung/java:/opt/host-java -e JAVA_HOME=/opt/host-java/jdk-17'
-    //     }
-    // }
+	agent {
+        docker {
+            image 'node:18.18.2'
+            // args '-d -p 8443:3000 -u root -v /home/psp_jwoyoung/java:/opt/host-java -e JAVA_HOME=/opt/host-java/jdk-17'
+        }
+    }
 
     agent any
 
@@ -13,22 +13,22 @@ pipeline {
     }
 
 	stages {
-        stage('Checkout SCM') {
-			steps {
-				git 'https://github.com/yuxun19999/JenkinsDependencyCheckTest.git'
-			}
-		}
-
-		// stage('Backend Tests') {
-		//     steps{
-        //         dir('/Users/yuxun/Documents/GitHub/Project3103/backend-sit-forum-app-v1'){
-        //             sh 'npm install'
-        //             sh 'npm audit fix --force'
-        //             sh 'npm test'
-        //             junit 'backend-test-results.xml'
-        //         }
+        // stage('Checkout SCM') {
+		// 	steps {
+		// 		git 'https://github.com/yuxun19999/JenkinsDependencyCheckTest.git'
 		// 	}
 		// }
+
+		stage('Backend Tests') {
+		    steps{
+                dir('/Users/yuxun/Documents/GitHub/Project3103/backend-sit-forum-app-v1'){
+                    sh 'npm install'
+                    sh 'npm audit fix --force'
+                    sh 'npm test'
+                    junit 'backend-test-results.xml'
+                }
+			}
+		}
         stage('Install Chrome for testing'){
             steps{
                 sh 'echo $JAVA_HOME'
