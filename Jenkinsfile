@@ -7,6 +7,11 @@ pipeline {
     //         args '-u root -v /usr/bin/java:/opt/host-java -e JAVA_HOME=/opt/homebrew/opt/openjdk -v /var/run/docker.sock:/var/run/docker.sock'
     //     }
     // }
+
+    environment {
+        NODEJS_HOME = '/opt/homebrew/bin/node'
+        PATH = "$NODEJS_HOME/bin:$PATH"
+    }
     
 
 
