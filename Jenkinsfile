@@ -21,7 +21,7 @@ pipeline {
 
 		stage('Backend Tests') {
 		    steps{
-                dir('./backend-sit-forum-app-v1'){
+                dir('/Users/yuxun/Documents/GitHub/Project3103/backend-sit-forum-app-v1'){
                     sh 'npm install'
                     sh 'npm audit fix --force'
                     sh 'npm test'
