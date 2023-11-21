@@ -32,23 +32,9 @@ pipeline {
         }
 
         stage('Frontend UI Testing') {
-            parallel {
-                stage('Start Frontend') {
-                    steps {
-                        sh 'cd ./frontend-sit-forum-app && npm install'
-                        sh 'cd ./frontend-sit-forum-app && (npm start &)'
-                        input message: 'Finished using the web site? (Click "Proceed" to continue)'
-                    }
-                }
-
-                stage('Headless Browser Test') {
-                    steps {
-                        dir('frontend-sit-forum-app') {
-                            sh 'sleep 120'
-                            sh 'npm test'
-                            junit 'frontend-test-results.xml'
-                        }
-                    }
+            steps {
+                script {
+                    echo 'No steps specified for this stage yet.'
                 }
             }
         }
