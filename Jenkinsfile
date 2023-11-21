@@ -5,9 +5,6 @@ pipeline {
             args '-u root -v /usr/bin/java:/opt/host-java -e JAVA_HOME=/opt/homebrew/opt/openjdk'
         }
     }
-    environment {
-        DOCKER_HOST = 'http://localhost:8080'
-    }
     
 
 
