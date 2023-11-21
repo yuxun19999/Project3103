@@ -17,8 +17,8 @@ pipeline {
 
 	stages {
         script {
-        echo "NODEJS_HOME: $NODEJS_HOME"
-        echo "PATH: $PATH"
+            echo "NODEJS_HOME: $NODEJS_HOME"
+            echo "PATH: $PATH"
         }
 
 		stage('Backend Tests') {
