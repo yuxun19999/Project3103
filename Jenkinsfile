@@ -16,6 +16,11 @@ pipeline {
 
 
 	stages {
+        script {
+        echo "NODEJS_HOME: $NODEJS_HOME"
+        echo "PATH: $PATH"
+        }
+
 		stage('Backend Tests') {
 		    steps{
                 dir('backend-sit-forum-app-v1'){
