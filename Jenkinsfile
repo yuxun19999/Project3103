@@ -5,13 +5,13 @@ pipeline {
         NODEJS_HOME = '/opt/homebrew/bin/node'
         PATH = "$NODEJS_HOME/bin:$PATH"
     }
+    
 
-    stages {
-        stage('Print Environment') {
-            steps {
-                echo "NODEJS_HOME: $NODEJS_HOME"
-                echo "PATH: $PATH"
-            }
+
+	stages {
+        script {
+        echo "NODEJS_HOME: $NODEJS_HOME"
+        echo "PATH: $PATH"
         }
 
         stage('Backend Tests') {
