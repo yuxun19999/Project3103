@@ -2,7 +2,7 @@ pipeline {
 	agent {
         docker {
             image 'node:18.18.2'
-            args '-u root -v /usr/bin/java:/opt/host-java -e JAVA_HOME=/opt/homebrew/opt/openjdk -v jenkins-docker:/var/run/docker.sock'
+            args '-u root -v /usr/bin/java:/opt/host-java -e JAVA_HOME=/opt/homebrew/opt/openjdk --host http://localhost:8080'
         }
     }
 
