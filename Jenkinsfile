@@ -1,10 +1,6 @@
 pipeline {
     agent any
 
-    environment {
-        NODEJS_HOME = '/opt/homebrew/bin/node'
-        PATH = "$NODEJS_HOME/bin:$PATH"
-    }
 
     stages {
         stage('Print Environment') {
@@ -32,9 +28,23 @@ pipeline {
         }
 
         stage('Frontend UI Testing') {
-            steps {
-                script {
-                    echo 'No steps specified for this stage yet.'
+            parallel {
+                stage('Start Frontend') {
+                    steps {
+                        sh 'cd ./frontend-sit-forum-app && npm install'
+                        sh 'cd ./frontend-sit-forum-app && (npm start &)'
+                        input message: 'Finished using the web site? (Click "Proceed" to continue)'
+                    }
+                }
+
+                stage('Headless Browser Test') {
+                    steps {
+                        dir('frontend-sit-forum-app') {
+                            sh 'sleep 120'
+                            sh 'npm test'
+                            junit 'frontend-test-results.xml'
+                        }
+                    }
                 }
             }
         }
