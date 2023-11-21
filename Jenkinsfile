@@ -1,10 +1,12 @@
 pipeline {
-	agent {
-        docker {
-            image 'node:18.18.2'
-            args '-u root -v /usr/bin/java:/opt/host-java -e JAVA_HOME=/opt/homebrew/opt/openjdk'
-        }
-    }
+
+    agent any
+	// agent {
+    //     docker {
+    //         image 'node:18.18.2'
+    //         args '-u root -v /usr/bin/java:/opt/host-java -e JAVA_HOME=/opt/homebrew/opt/openjdk -v /var/run/docker.sock:/var/run/docker.sock'
+    //     }
+    // }
     
 
 
