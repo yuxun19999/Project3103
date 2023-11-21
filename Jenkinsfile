@@ -2,7 +2,7 @@ pipeline {
 	agent {
         docker {
             image 'node:18.18.2'
-            args '-p 8443:3000 -u root -v /home/psp_jwoyoung/java:/opt/host-java -e JAVA_HOME=/opt/host-java/jdk-17 --host: tcp://0.0.0.0:2376'
+            args '-p 8443:3000 -u root -v /home/psp_jwoyoung/java:/opt/host-java -e JAVA_HOME=/opt/host-java/jdk-17 --host: tcp://localhost:8080'
         }
     }
 
