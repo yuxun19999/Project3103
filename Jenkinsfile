@@ -2,7 +2,7 @@ pipeline {
 	agent {
         docker {
             image 'node:18.18.2'
-            args '-u root -v /home/psp_jwoyoung/java:/opt/host-java -e JAVA_HOME=/opt/host-java/jdk-17 -v /var/run/docker.sock:/var/run/docker.sock'
+            args '-u root -v /home/psp_jwoyoung/java:/opt/host-java -e JAVA_HOME=/opt/host-java/jdk-17 -v jenkins-docker:/var/run/docker.sock'
         }
     }
 
