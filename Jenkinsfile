@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        NODEJS_HOME = '/opt/homebrew/bin/node'
+        PATH = "$NODEJS_HOME/bin:$PATH"
+    }
 
     stages {
         stage('Print Environment') {
